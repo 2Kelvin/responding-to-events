@@ -1,8 +1,16 @@
+function AButton() {
+    return React.createElement(
+        "button",
+        { className: "button-30" },
+        "Button"
+    );
+}
+
 export default function App() {
     return React.createElement(
-        "h1",
-        null,
-        "Hello Events"
+        "div",
+        { className: "app" },
+        React.createElement(AButton, null)
     );
 }
 

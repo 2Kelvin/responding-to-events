@@ -1,5 +1,17 @@
+function AButton() {
+    return (
+        <button className="button-30">
+            Button
+        </button>
+    );
+}
+
 export default function App() {
-    return <h1>Hello Events</h1>;
+    return (
+        <div className="app" >
+            <AButton />
+        </div>
+    );
 }
 
 // react_connection
