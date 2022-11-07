@@ -45,3 +45,4 @@ root.render(<App />);
 // ...and only ensure it fires when an event occurs
 
 // since an event handler is defined inside a component, it has access to all its props
+// Often you’ll want the parent component to specify a child’s event handler
