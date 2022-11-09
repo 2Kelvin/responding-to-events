@@ -6,9 +6,9 @@ function Button({ children, onClick }) {
   );
 }
 
-function Menu({ onPlaySong, onUpload }) {
+function Menu({ onPlaySong, onUpload, onMenuClick }) {
   return (
-    <div className="menu">
+    <div className="menu" onClick={onMenuClick}>
       <Button onClick={onPlaySong}>Play Song</Button>
       <Button onClick={onUpload}>Upload Image</Button>
     </div>
@@ -20,6 +20,7 @@ export default function App() {
     <Menu
       onPlaySong={() => alert("Playing song")}
       onUpload={() => alert("Uploading")}
+      onMenuClick={() => alert("You clicked our menu")}
     />
   );
 }
@@ -55,3 +56,4 @@ root.render(<App />);
 
 // when a component supports multiple interactions/events, name the event handler props as per the specific task each handler will do
 // e.g. 'onPlaySong' or 'onUploadImage' event handlers on the Menu component above
+// naming event props after specific tasks helps you reuse them in future if you want to on different app events

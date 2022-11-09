@@ -2,13 +2,23 @@ body {
     margin: 0;
 }
 
-.app,
-.menu {
+/* 
+.app {
     background-color: #dfdfdf;
     display: grid;
     place-content: center;
     padding-top: 2em;
     height: 96.5vh;
+} */
+
+.menu {
+    background-color: rebeccapurple;
+    margin: auto;
+    margin-top: 45%;
+    padding: 3em;
+    border-radius: 15px;
+    width: fit-content;
+    cursor: pointer;
 }
 
 /* button */

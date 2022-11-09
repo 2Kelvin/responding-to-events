@@ -11,11 +11,12 @@ function Button(_ref) {
 
 function Menu(_ref2) {
   var onPlaySong = _ref2.onPlaySong,
-      onUpload = _ref2.onUpload;
+      onUpload = _ref2.onUpload,
+      onMenuClick = _ref2.onMenuClick;
 
   return React.createElement(
     "div",
-    { className: "menu" },
+    { className: "menu", onClick: onMenuClick },
     React.createElement(
       Button,
       { onClick: onPlaySong },
@@ -36,6 +37,9 @@ export default function App() {
     },
     onUpload: function onUpload() {
       return alert("Uploading");
+    },
+    onMenuClick: function onMenuClick() {
+      return alert("You clicked our menu");
     }
   });
 }
@@ -71,3 +75,4 @@ root.render(React.createElement(App, null));
 
 // when a component supports multiple interactions/events, name the event handler props as per the specific task each handler will do
 // e.g. 'onPlaySong' or 'onUploadImage' event handlers on the Menu component above
+// naming event props after specific tasks helps you reuse them in future if you want to on different app events
