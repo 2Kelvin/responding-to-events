@@ -1,25 +1,29 @@
-function Button({ children, message }) {
-    return (
-        <button
-            className="button-30"
-            onClick={() => alert(message)}
-        >
-            {children}
-        </button>
-    );
+function Button({ children, onClick }) {
+  return (
+    <button className="button-30" onClick={onClick}>
+      {children}
+    </button>
+  );
+}
+
+function PlayButton({ songName }) {
+  function handlePlayClick() {
+    alert(`Playing ${songName}`);
+  }
+  return <Button onClick={handlePlayClick}>Play Song</Button>;
+}
+
+function UploadButton() {
+  return <Button onClick={() => alert("Uploading image")}>Upload image</Button>;
 }
 
 export default function App() {
-    return (
-        <div className="app" >
-            <Button message="Playing your song">
-                Play Song
-            </Button>
-            <Button message="Uploading your image">
-                Upload Image
-            </Button>
-        </div>
-    );
+  return (
+    <div className="app">
+      <PlayButton songName="Replay by Iyaz" />
+      <UploadButton />
+    </div>
+  );
 }
 
 // react_connection
@@ -27,7 +31,7 @@ const rootNode = document.getElementById("reactRoot");
 const root = ReactDOM.createRoot(rootNode);
 root.render(<App />);
 
-// NOTES 
+// NOTES
 // event handlers are usually defined INSIDE your component(s)
 // naming: start with the name 'handle' followed by the name of the event e.g. click, hover, focus
 // event handlers passed in as props MUST be 'passed' not 'called'
@@ -46,3 +50,8 @@ root.render(<App />);
 
 // since an event handler is defined inside a component, it has access to all its props
 // Often you’ll want the parent component to specify a child’s event handler
+// it's common & good practice for components like Button above to just contain styling and NOT the behavior
+// it receives its logic & behavior from parent components like PlayButton & UploadButton above (which will pass down the needed props to the Button)
+
+// By convention, event handler props should start with on, followed by a capital letter (of the event name you want)
+// the naming of the event handler prop received by your component is up to you!
