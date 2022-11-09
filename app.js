@@ -9,38 +9,29 @@ function Button(_ref) {
   );
 }
 
-function PlayButton(_ref2) {
-  var songName = _ref2.songName;
+function Menu(_ref2) {
+  var onPlaySong = _ref2.onPlaySong,
+      onUpload = _ref2.onUpload;
 
-  function handlePlayClick() {
-    alert("Playing " + songName);
-  }
   return React.createElement(
-    Button,
-    { onClick: handlePlayClick },
-    "Play Song"
-  );
-}
-
-function UploadButton() {
-  return React.createElement(
-    Button,
-    { onClick: function onClick() {
-        return alert("Uploading image");
-      } },
-    "Upload image"
+    "div",
+    { className: "menu" },
+    React.createElement(
+      Button,
+      { onClick: onPlaySong },
+      "Play Song"
+    ),
+    React.createElement(
+      Button,
+      { onClick: onUpload },
+      "Upload Image"
+    )
   );
 }
 
 export default function App() {
-  return React.createElement(
-    "div",
-    { className: "app" },
-    React.createElement(PlayButton, { songName: "Replay by Iyaz" }),
-    React.createElement(UploadButton, null)
-  );
+  return React.createElement(Menu, null);
 }
-
 // react_connection
 var rootNode = document.getElementById("reactRoot");
 var root = ReactDOM.createRoot(rootNode);
@@ -70,3 +61,6 @@ root.render(React.createElement(App, null));
 
 // By convention, event handler props should start with on, followed by a capital letter (of the event name you want)
 // the naming of the event handler prop received by your component is up to you!
+
+// when a component supports multiple interactions/events, name the event handler props as per the specific task each handler will do
+// e.g. 'onPlaySong' or 'onUploadImage' event handlers on the Menu component above

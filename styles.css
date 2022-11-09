@@ -2,7 +2,8 @@ body {
     margin: 0;
 }
 
-.app {
+.app,
+.menu {
     background-color: #dfdfdf;
     display: grid;
     place-content: center;
@@ -41,6 +42,7 @@ body {
     will-change: box-shadow, transform;
     font-size: 18px;
     margin-bottom: 1.5em;
+    margin-right: 1em;
 }
 
 .button-30:focus {

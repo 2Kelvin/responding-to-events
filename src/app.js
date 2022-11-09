@@ -6,26 +6,18 @@ function Button({ children, onClick }) {
   );
 }
 
-function PlayButton({ songName }) {
-  function handlePlayClick() {
-    alert(`Playing ${songName}`);
-  }
-  return <Button onClick={handlePlayClick}>Play Song</Button>;
-}
-
-function UploadButton() {
-  return <Button onClick={() => alert("Uploading image")}>Upload image</Button>;
-}
-
-export default function App() {
+function Menu({ onPlaySong, onUpload }) {
   return (
-    <div className="app">
-      <PlayButton songName="Replay by Iyaz" />
-      <UploadButton />
+    <div className="menu">
+      <Button onClick={onPlaySong}>Play Song</Button>
+      <Button onClick={onUpload}>Upload Image</Button>
     </div>
   );
 }
 
+export default function App() {
+  return <Menu />;
+}
 // react_connection
 const rootNode = document.getElementById("reactRoot");
 const root = ReactDOM.createRoot(rootNode);
@@ -55,3 +47,6 @@ root.render(<App />);
 
 // By convention, event handler props should start with on, followed by a capital letter (of the event name you want)
 // the naming of the event handler prop received by your component is up to you!
+
+// when a component supports multiple interactions/events, name the event handler props as per the specific task each handler will do
+// e.g. 'onPlaySong' or 'onUploadImage' event handlers on the Menu component above
