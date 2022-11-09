@@ -30,7 +30,14 @@ function Menu(_ref2) {
 }
 
 export default function App() {
-  return React.createElement(Menu, null);
+  return React.createElement(Menu, {
+    onPlaySong: function onPlaySong() {
+      return alert("Playing song");
+    },
+    onUpload: function onUpload() {
+      return alert("Uploading");
+    }
+  });
 }
 // react_connection
 var rootNode = document.getElementById("reactRoot");

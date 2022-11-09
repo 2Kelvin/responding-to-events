@@ -16,7 +16,12 @@ function Menu({ onPlaySong, onUpload }) {
 }
 
 export default function App() {
-  return <Menu />;
+  return (
+    <Menu
+      onPlaySong={() => alert("Playing song")}
+      onUpload={() => alert("Uploading")}
+    />
+  );
 }
 // react_connection
 const rootNode = document.getElementById("reactRoot");
