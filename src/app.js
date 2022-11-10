@@ -1,12 +1,6 @@
 function Button({ children, onClick }) {
   return (
-    <button
-      className="button-30"
-      onClick={(e) => {
-        e.stopPropagation();
-        onClick();
-      }}
-    >
+    <button className="button-30" onClick={onClick}>
       {children}
     </button>
   );
@@ -21,7 +15,13 @@ function PlayMovie({ movieName }) {
 
 function Menu({ onPlaySong, onUpload, onMenuClick }) {
   return (
-    <div className="menu" onClick={onMenuClick}>
+    <div
+      className="menu"
+      onClick={(e) => {
+        e.stopPropagation();
+        onMenuClick();
+      }}
+    >
       <Button onClick={onPlaySong}>Play Song</Button>
       <Button onClick={onUpload}>Upload Image</Button>
     </div>
@@ -85,3 +85,5 @@ root.render(<App />);
 // 'e' contains all the info about the event: access its properties to learn more about the event
 // the event object, e lets you stop propagation/ bubbling up of events you doon't want reaching the parent component
 // to achieve this, call 'e.stopPropagation()'
+// once you stop propagation the event handler passed to the component goes right below it
+// thenn in this case you 'call' the event handler prop, see code above
