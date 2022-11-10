@@ -2,14 +2,14 @@ body {
     margin: 0;
 }
 
-/* 
+
 .app {
     background-color: #dfdfdf;
     display: grid;
     place-content: center;
     padding-top: 2em;
     height: 96.5vh;
-} */
+}
 
 .menu {
     background-color: rebeccapurple;
@@ -52,6 +52,7 @@ body {
     will-change: box-shadow, transform;
     font-size: 18px;
     margin-bottom: 1.5em;
+    margin-top: 1.5em;
     margin-right: 1em;
 }
 

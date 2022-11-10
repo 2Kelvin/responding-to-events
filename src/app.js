@@ -1,9 +1,22 @@
 function Button({ children, onClick }) {
   return (
-    <button className="button-30" onClick={onClick}>
+    <button
+      className="button-30"
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
+    >
       {children}
     </button>
   );
+}
+
+function PlayMovie({ movieName }) {
+  function handleMovieClick() {
+    alert(`Playing ${movieName}`);
+  }
+  return <Button onClick={handleMovieClick}>Play Movie</Button>;
 }
 
 function Menu({ onPlaySong, onUpload, onMenuClick }) {
@@ -17,11 +30,14 @@ function Menu({ onPlaySong, onUpload, onMenuClick }) {
 
 export default function App() {
   return (
-    <Menu
-      onPlaySong={() => alert("Playing song")}
-      onUpload={() => alert("Uploading")}
-      onMenuClick={() => alert("You clicked our menu")}
-    />
+    <div className="app">
+      <Menu
+        onPlaySong={() => alert("Playing song")}
+        onUpload={() => alert("Uploading")}
+        onMenuClick={() => alert("You clicked our menu")}
+      />
+      <PlayMovie movieName="It's a Wonderful Life" />
+    </div>
   );
 }
 // react_connection
@@ -57,3 +73,15 @@ root.render(<App />);
 // when a component supports multiple interactions/events, name the event handler props as per the specific task each handler will do
 // e.g. 'onPlaySong' or 'onUploadImage' event handlers on the Menu component above
 // naming event props after specific tasks helps you reuse them in future if you want to on different app events
+
+// events 'bubbles/ propagates up' the tree
+// ...it starts where the event happened and then goes up the tree e.g. Menu component above
+// ...when you click any Button inside Menu both event handlers for the Button & Menu are fired
+// All events propagate in React except 'onScroll', which only works on the component/ JSX you attach it to
+
+// STOPPING PROPAGATION
+// event handlers receive an event object as their ONLY arguement
+// the event object is called 'e' which stands for 'event'
+// 'e' contains all the info about the event: access its properties to learn more about the event
+// the event object, e lets you stop propagation/ bubbling up of events you doon't want reaching the parent component
+// to achieve this, call 'e.stopPropagation()'

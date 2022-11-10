@@ -1,18 +1,37 @@
 function Button(_ref) {
   var children = _ref.children,
-      onClick = _ref.onClick;
+      _onClick = _ref.onClick;
 
   return React.createElement(
     "button",
-    { className: "button-30", onClick: onClick },
+    {
+      className: "button-30",
+      onClick: function onClick(e) {
+        e.stopPropagation();
+        _onClick();
+      }
+    },
     children
   );
 }
 
-function Menu(_ref2) {
-  var onPlaySong = _ref2.onPlaySong,
-      onUpload = _ref2.onUpload,
-      onMenuClick = _ref2.onMenuClick;
+function PlayMovie(_ref2) {
+  var movieName = _ref2.movieName;
+
+  function handleMovieClick() {
+    alert("Playing " + movieName);
+  }
+  return React.createElement(
+    Button,
+    { onClick: handleMovieClick },
+    "Play Movie"
+  );
+}
+
+function Menu(_ref3) {
+  var onPlaySong = _ref3.onPlaySong,
+      onUpload = _ref3.onUpload,
+      onMenuClick = _ref3.onMenuClick;
 
   return React.createElement(
     "div",
@@ -31,17 +50,22 @@ function Menu(_ref2) {
 }
 
 export default function App() {
-  return React.createElement(Menu, {
-    onPlaySong: function onPlaySong() {
-      return alert("Playing song");
-    },
-    onUpload: function onUpload() {
-      return alert("Uploading");
-    },
-    onMenuClick: function onMenuClick() {
-      return alert("You clicked our menu");
-    }
-  });
+  return React.createElement(
+    "div",
+    { className: "app" },
+    React.createElement(Menu, {
+      onPlaySong: function onPlaySong() {
+        return alert("Playing song");
+      },
+      onUpload: function onUpload() {
+        return alert("Uploading");
+      },
+      onMenuClick: function onMenuClick() {
+        return alert("You clicked our menu");
+      }
+    }),
+    React.createElement(PlayMovie, { movieName: "It's a Wonderful Life" })
+  );
 }
 // react_connection
 var rootNode = document.getElementById("reactRoot");
@@ -76,3 +100,15 @@ root.render(React.createElement(App, null));
 // when a component supports multiple interactions/events, name the event handler props as per the specific task each handler will do
 // e.g. 'onPlaySong' or 'onUploadImage' event handlers on the Menu component above
 // naming event props after specific tasks helps you reuse them in future if you want to on different app events
+
+// events 'bubbles/ propagates up' the tree
+// ...it starts where the event happened and then goes up the tree e.g. Menu component above
+// ...when you click any Button inside Menu both event handlers for the Button & Menu are fired
+// All events propagate in React except 'onScroll', which only works on the component/ JSX you attach it to
+
+// STOPPING PROPAGATION
+// event handlers receive an event object as their ONLY arguement
+// the event object is called 'e' which stands for 'event'
+// 'e' contains all the info about the event: access its properties to learn more about the event
+// the event object, e lets you stop propagation/ bubbling up of events you doon't want reaching the parent component
+// to achieve this, call 'e.stopPropagation()'
