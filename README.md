@@ -7,3 +7,4 @@ In this read, I learn:
 - to name event handlers in react: `handleEventName`
 - how to add multiple events to one component. And how in such cases, we shouls rename event handlers as per the task they'll do starting with the keyword one e.g. onUpload, on onMoviePlay
 - About `propagation` and how to stop it using `e.stopPropagation()`
+- to prevent default behavior using `e.preventDefault()`

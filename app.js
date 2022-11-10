@@ -114,3 +114,16 @@ root.render(React.createElement(App, null));
 // to achieve this, call 'e.stopPropagation()'
 // once you stop propagation the event handler passed to the component goes right below it
 // in this case you 'call' the event handler prop, see code above
+// once you stop propagation, the parent's event handler(s) don't run whenever a child's event handler runs
+// this means the child component only runs its own event logic independently, solo!
+
+// e.stopPropagation() stops the event handlers of the component's parent from firing
+// e.preventDefault() prevents the default browser behavior for the few events that have it
+// ...like form's submit button which when clicked, refreshes the page
+
+// event handlers are the best to use side effects on
+// since they don't need to be pure like components, they are a great place to change something
+
+// You can define your own event handler props with application-specific names
+// Events propagate upwards
+// Explicitly calling an event handler prop from a child handler is a good alternative to propagation.
