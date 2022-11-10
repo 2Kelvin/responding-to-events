@@ -1,10 +1,16 @@
 function Button(_ref) {
   var children = _ref.children,
-      onClick = _ref.onClick;
+      _onClick = _ref.onClick;
 
   return React.createElement(
     "button",
-    { className: "button-30", onClick: onClick },
+    {
+      className: "button-30",
+      onClick: function onClick(e) {
+        e.stopPropagation();
+        _onClick();
+      }
+    },
     children
   );
 }
@@ -29,13 +35,7 @@ function Menu(_ref3) {
 
   return React.createElement(
     "div",
-    {
-      className: "menu",
-      onClick: function onClick(e) {
-        e.stopPropagation();
-        onMenuClick();
-      }
-    },
+    { className: "menu", onClick: onMenuClick },
     React.createElement(
       Button,
       { onClick: onPlaySong },
@@ -113,4 +113,4 @@ root.render(React.createElement(App, null));
 // the event object, e lets you stop propagation/ bubbling up of events you doon't want reaching the parent component
 // to achieve this, call 'e.stopPropagation()'
 // once you stop propagation the event handler passed to the component goes right below it
-// thenn in this case you 'call' the event handler prop, see code above
+// in this case you 'call' the event handler prop, see code above
