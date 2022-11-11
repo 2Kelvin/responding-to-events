@@ -1,5 +1,7 @@
 # responding-to-events
 
+![events](https://user-images.githubusercontent.com/85868026/201303107-d4f2fe89-cdf1-4f6a-98cd-4c917b86cc37.png)
+
 In this read, I learn:
 
 - About `event handlers`. Which are just functions that run when a particular event (like for example a button click) happens
