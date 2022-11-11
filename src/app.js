@@ -33,7 +33,7 @@ export default function App() {
     <div className="app">
       <Menu
         onPlaySong={() => alert("Playing song")}
-        onUpload={() => alert("Uploading")}
+        onUpload={() => alert("Uploading your image")}
         onMenuClick={() => alert("You clicked our menu")}
       />
       <PlayMovie movieName="It's a Wonderful Life" />

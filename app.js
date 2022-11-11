@@ -58,7 +58,7 @@ export default function App() {
         return alert("Playing song");
       },
       onUpload: function onUpload() {
-        return alert("Uploading");
+        return alert("Uploading your image");
       },
       onMenuClick: function onMenuClick() {
         return alert("You clicked our menu");
